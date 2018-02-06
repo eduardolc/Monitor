@@ -1,0 +1,8 @@
+mkdir pasta
+cd pasta
+npm install -g express-generator
+express -e --git
+npm install 
+
+
+
