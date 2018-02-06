@@ -1,0 +1,39 @@
+Criando projeto node js com template engener ejs ja pronto para o git (.gitignore)
+
+mkdir pasta
+cd pasta
+npm install -g express-generator
+express -e --git
+npm install 
+
+Git 
+
+-Criando primeiro repositorio local
+
+echo "# exemplo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/gleybsonf/exemplo.git
+git push -u origin master
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/gleybsonf/exemplo.git
+git push -u origin master
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+
+-Clonar projeto do git
+git clone https://github.com/gleybsonf/exemplo.git
+
+
+-Enviar alterações feitas no projeto direto para master
+git add --all
+git status (para verificar se os arquivos foram adcionados)
+git commit -m "comentario do commit"
+git status (para verificar se os arquivos foram adcionados)
+git push -u origin master
+
+-Pegando alterações do projeto no repositório git
+git pull origin master
