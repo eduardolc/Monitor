@@ -1,0 +1,35 @@
+  div.circleOff{ 
+    width: 20px; 
+    height: 20px; 
+    background: #ff0000cb; 
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    position: absolute;
+    left: 180px;
+    top: 208px;
+  }
+
+  .circleBusy{ 
+    width: 20px; 
+    height: 20px; 
+    background: #ff9100cb; 
+    -moz-border-radius: 50px; 
+    -webkit-border-radius: 50px; 
+    border-radius: 50px; 
+    position: absolute;
+    left: 180px;
+    top: 208px;
+  }
+
+  .circleOn{ 
+    width: 20px; 
+    height: 20px; 
+    background: #18ac0b5b; 
+    -moz-border-radius: 50px; 
+    -webkit-border-radius: 50px; 
+    border-radius: 50px; 
+    position: absolute;
+    left: 180px;
+    top: 208px;
+  }
