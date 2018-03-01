@@ -7,8 +7,8 @@ function startServer(host, porta, comando){
         path: comando,
         agent: false
     }, (res) => {
-        console.log('Status da operação: ' + res.statusMessage);
-        console.log('Cod Status da operação: ' + res.statusCode);
+        console.log('Status da operação startServer: ' + res.statusMessage);
+        console.log('Cod Status da operação startServer: ' + res.statusCode);
     });
 }
 
@@ -19,8 +19,8 @@ function configServer(host, porta, scriptsfolder){
         path: '/scripts/'+scriptsfolder,
         agent: false
     }, (res) => {
-        console.log('Status da operação: ' + res.statusMessage);
-        console.log('Cod Status da operação: ' + res.statusCode);
+        console.log('Status da operação configServer: ' + res.statusMessage);
+        console.log('Cod Status da operação configServer: ' + res.statusCode);
     });
 }
 
@@ -31,8 +31,8 @@ function StartTest(host, porta, test){
         path: '/run/'+test,
         agent: false
     }, (res) => {
-        console.log('Status da operação: ' + res.statusMessage);
-        console.log('Cod Status da operação: ' + res.statusCode);
+        console.log('Status da operação StartTest: ' + res.statusMessage);
+        console.log('Cod Status da operação StartTest: ' + res.statusCode);
     });
 }
 

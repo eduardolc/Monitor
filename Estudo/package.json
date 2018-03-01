@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs-locals": "^1.0.2",
     "mysql": "^2.15.0"
   }
 }

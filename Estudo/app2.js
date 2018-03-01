@@ -3,6 +3,7 @@ var port = 50001;
 var server = '10.50.62.154';
 var mysql = require('mysql');
 
+//Criando conexão mysql
 var con = mysql.createConnection({
     host: "10.50.62.154",
     user: "root",
@@ -10,73 +11,32 @@ var con = mysql.createConnection({
     database: "reef",
     port: 3306
     });
-
+//executando uma query pra pegar os testes que não foram executados através de uma promise
 let promise1 = new Promise((resolve, reject) => {
     con.connect(function(err){
         if (err) throw err;
-        con.query("select * from reef.teste_historico th where th.id between '3150' and '3152'", function(err, result, fields){
+        con.query("select * from reef.teste_historico th where th.estado = ''", function(err, result, fields){
             if (err) throw err;
             resolve(result);
             con.end();
         });
       });
 });
-
+//configurando o servidor REST para linguagem python
 sikulix.startServer(server, port, '/startp');
 
+//pegando o resultado da query
 promise1.then((resultado) =>{
+    //loop para percorrer todos os resultados
     for (var i in resultado){
+        
+        //var string = resultado[i].modulo;
+        //formatando o caminho da pasta dos testes
+        //var path = "C:\\PIRAMIDE604\\" + string.substr(13,(string.length - 13));
+        //setando a pasta dos scripts
         sikulix.configServer(server, port, resultado[i].modulo);
+        //executando teste
         sikulix.StartTest(server, port, resultado[i].tst);
-            //console.log(resultado[i].tst);
-            //console.log(resultado[i].modulo);
+            
           }
 });
-//con.connect();
-
-//var query = con.query("select * from reef.teste_historico th where th.id between '3150' and '3152'");
-
-//console.log(query.RowDataPacket('result'));
- 
-//var resultado;
-
-//query.on('result', function(row) {
-    //console.log(row);
-    //this.resultado = row;
-  //  });
-
-//console.log(resultado);
-/*resultado = con.connect(function(err){
-    if (err) throw err;
-    con.query("select * from reef.teste_historico th where th.id between '3150' and '3152'", function(err, result, fields){
-        if (err) throw err;
-        console.log(result[0].id);
-        con.end();
-    });
-  });
-
-console.log(resultado);
-*/
-
-//for (var i in resultado){
-//    console.log(resultado[i].tst);
-//    console.log(resultado[i].modulo);
-//  }
-//console.log(resultado);
-
-
-
-
-//for (let index = 0; index < resultado.length; index++) {
-  //  console.log(array[index].tst);
-    //console.log(array[index].modulo);
-    //const element = array[index];
-    //sikulix.StartTest('localhost', port, element);
-    
-
-
-
-//
-//sikulix.configServer('localhost', port, '\\PIRAMIDE604\\ATIVOFIXO');
-
-//var array = ["TST1662059", "TST1662054", "TST1662060", "TST1664435", "TST1664575"];

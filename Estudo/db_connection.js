@@ -1,6 +1,8 @@
 var mysql = require('mysql');
 
-
+var string = "c:PIRAMIDE604ATIVOFIXO";
+var string1 = string.substr(13,(string.length - 13));
+console.log(string1);
 
 /*function CriarConect(){
     var con = mysql.createConnection({
