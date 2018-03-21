@@ -1,11 +1,7 @@
 var Q = require('q');
 var mysql = require('mysql');
-var async = require('async');
-var sikulix = require('./restSikulix');
-//Porta padrão
-var portRS = 50001;
-var hostLivre = "";
 
+//Criar pool de conexão com o banco de dados
 pool = mysql.createPool({
     host: "10.50.62.154",
     user: "root",
@@ -14,6 +10,7 @@ pool = mysql.createPool({
     port: 3306
 });
 
+//Função para pegar a lista de testes pendentes
 function verifTest(){
     var deferred = Q.defer();
     pool.getConnection(function(err, connection){
@@ -24,6 +21,7 @@ function verifTest(){
     return deferred.promise;
 }
 
+//Função para pegar os host disponiveis
 function veriHost(){
     var deferred = Q.defer();
     pool.getConnection(function(err, connection){
@@ -34,32 +32,5 @@ function veriHost(){
     return deferred.promise;
 }
 
-function runTestAuto(tst, host){
-    var deferred = Q.defer();
-    console.log(tst[0].tst, host[0].ip);
-    deferred.resolve(true);
-    return tst+' = '+host;
-}
-
-
-
-
-/*veriHost()
-    .then(function(host){
-        hostLivre += host[0].ip;
-        //console.log(hostLivre);
-        return verifTest();
-    }).then(function(testes){
-        if (hostLivre){
-            console.log('Maquina Disponivel!');
-            sikulix.configServerPython(hostLivre, portRS, '/startp');
-            sikulix.configScriptsfolder(hostLivre, portRS, testes[0].modulo);
-            async.each(testes, function(err, contents){
-                sikulix.StartTest(hostLivre, portRS, testes[0].tst);
-            });
-        }
-        console.log('Finalizado');
-    });
-*/
-
+//exportar funções
 module.exports = {verifTest, veriHost};
