@@ -1,4 +1,4 @@
-var sikulix = require('./teste2');
+var sikulix = require('./restSikulix');
 var port = 50001;
 var server = '10.50.62.154';
 var mysql = require('mysql');
@@ -10,7 +10,10 @@ var con = mysql.createConnection({
     password: "teste",      
     database: "reef",
     port: 3306
-    });
+  });
+
+
+
 //executando uma query pra pegar os testes que não foram executados através de uma promise
 let promise1 = new Promise((resolve, reject) => {
     con.connect(function(err){
@@ -23,7 +26,7 @@ let promise1 = new Promise((resolve, reject) => {
       });
 });
 //configurando o servidor REST para linguagem python
-sikulix.startServer(server, port, '/startp');
+sikulix.configServerPython(server, port, '/startp');
 
 //pegando o resultado da query
 promise1.then((resultado) =>{
@@ -34,7 +37,7 @@ promise1.then((resultado) =>{
         //formatando o caminho da pasta dos testes
         //var path = "C:\\PIRAMIDE604\\" + string.substr(13,(string.length - 13));
         //setando a pasta dos scripts
-        sikulix.configServer(server, port, resultado[i].modulo);
+        sikulix.configScriptsfolder(server, port, resultado[i].modulo);
         //executando teste
         sikulix.StartTest(server, port, resultado[i].tst);
             
